@@ -6,7 +6,7 @@ metadata:
   annotations:
     strimzi.io/use-connector-resources: "true"
 spec:
-  version: 3.5.1
+  version: 3.7.0
   replicas: 1
   bootstrapServers: kafka-cluster-kafka-bootstrap:9093
   tls:
@@ -18,10 +18,6 @@ spec:
     offset.storage.topic: connect-cluster-offsets
     config.storage.topic: connect-cluster-configs
     status.storage.topic: connect-cluster-status
-    # -1 means it will use the default replication factor configured in the broker
-    config.storage.replication.factor: -1
-    offset.storage.replication.factor: -1
-    status.storage.replication.factor: -1
   build:
     output:
       type: docker
@@ -31,18 +27,13 @@ spec:
         artifacts:
           - type: tgz
             url: https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres/2.3.3.Final/debezium-connector-postgres-2.3.3.Final-plugin.tar.gz
-            sha512sum: a67963e1088c99db1e38a85c68507c171054b7238447f5aa1fe2cbdd55946d498c030b4b82dc005d55cd23a7cded0494d8fff0fdc59c4787098fe590bddb2990
           - type: tgz
             url: https://repo1.maven.org/maven2/io/apicurio/apicurio-registry-distro-connect-converter/2.3.1.Final/apicurio-registry-distro-connect-converter-2.3.1.Final.tar.gz
-            sha512sum: eee79c68bae272bef6f720fa5af6b583ed16cc2c5aa2da96e464b99ade677abd290561b97d3d9279ed158da216a78d15aa4f9495614517915b6eac29b13cfb56
       - name: kafka-connect-elasticsearch
         artifacts:
           - type: zip
-            url: https://d1i4a15mxbxib1.cloudfront.net/api/plugins/confluentinc/kafka-connect-elasticsearch/versions/14.0.10/confluentinc-kafka-connect-elasticsearch-14.0.10.zip
-            sha512sum: abe0ada4bba8d46c29a6eba2d31003f0293ea6d3f452c594a7cd4e2a834c72bafa9f47ae706b8c66e5856e3d05dbb50ddf858ff10979dbb99612fa62eabf5f21
+            url: https://d2p6pa21dvn84.cloudfront.net/api/plugins/confluentinc/kafka-connect-elasticsearch/versions/14.1.1/confluentinc-kafka-connect-elasticsearch-14.1.1.zip
           - type: jar
             url: https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-to-slf4j/2.9.1/log4j-to-slf4j-2.9.1.jar
-            sha512sum: f17358fb279873324a478df8f17932f7b81603797f477bda473529041bd0c8b9cd3157e230fc9182a6461084550f5bb57243b338d104a4cffb5b9e5ffb5ae4c4
           - type: tgz
             url: https://repo1.maven.org/maven2/io/apicurio/apicurio-registry-distro-connect-converter/2.3.1.Final/apicurio-registry-distro-connect-converter-2.3.1.Final.tar.gz
-            sha512sum: eee79c68bae272bef6f720fa5af6b583ed16cc2c5aa2da96e464b99ade677abd290561b97d3d9279ed158da216a78d15aa4f9495614517915b6eac29b13cfb56

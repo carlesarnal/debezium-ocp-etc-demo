@@ -6,7 +6,7 @@ metadata:
     app.kubernetes.io/part-of: cloud
 spec:
   kafka:
-    version: 3.5.1
+    version: 3.7.0
     replicas: 3
     listeners:
       - name: plain
@@ -23,7 +23,7 @@ spec:
       transaction.state.log.min.isr: 2
       default.replication.factor: 3
       min.insync.replicas: 2
-      inter.broker.protocol.version: "3.5"
+      inter.broker.protocol.version: '3.7'
     storage:
       type: ephemeral
   zookeeper:
